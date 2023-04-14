@@ -10,13 +10,39 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            MapView()
+                .ignoresSafeArea(edges: .top)
+                .frame(height: 300)
+            
+            CircleImage()
+                         .offset(y: -200)
+                         .padding(.bottom, -200)
+            VStack(alignment: .leading) {
+               
+                
+                Text("Miko")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                
+                HStack {
+                    Text("National Dog Park")
+                        .font(.subheadline)
+                    Spacer()
+                    Text("Indonesia")
+                        .font(.subheadline)
+                }
+                Divider()
+
+                    Text("About Miko")
+                        .font(.title2)
+                    Text("This is a poodle.")
+             
+            }   .padding()
+            Spacer()
         }
-        .padding()
-    }
+ 
+        }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

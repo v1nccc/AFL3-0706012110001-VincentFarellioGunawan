@@ -14,6 +14,8 @@
 		BF6270ED29E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6270EC29E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanTests.swift */; };
 		BF6270F729E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6270F629E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanUITests.swift */; };
 		BF6270F929E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6270F829E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanUITestsLaunchTests.swift */; };
+		BF63E11429E8EC0000B2291E /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63E11329E8EC0000B2291E /* CircleImage.swift */; };
+		BF63E11829E8ED0700B2291E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63E11729E8ED0700B2291E /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		BF6270F229E4F10200C756A9 /* AFL3-0706012110001-VincentFarellioGunawanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AFL3-0706012110001-VincentFarellioGunawanUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6270F629E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFL3_0706012110001_VincentFarellioGunawanUITests.swift; sourceTree = "<group>"; };
 		BF6270F829E4F10200C756A9 /* AFL3_0706012110001_VincentFarellioGunawanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFL3_0706012110001_VincentFarellioGunawanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BF63E11329E8EC0000B2291E /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		BF63E11729E8ED0700B2291E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 				BF6270DB29E4F10100C756A9 /* AFL3_0706012110001_VincentFarellioGunawanApp.swift */,
 				BF6270DD29E4F10100C756A9 /* ContentView.swift */,
 				BF6270DF29E4F10200C756A9 /* Assets.xcassets */,
+				BF63E11329E8EC0000B2291E /* CircleImage.swift */,
+				BF63E11729E8ED0700B2291E /* MapView.swift */,
 				BF6270E129E4F10200C756A9 /* Preview Content */,
 			);
 			path = "AFL3-0706012110001-VincentFarellioGunawan";
@@ -258,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6270DE29E4F10100C756A9 /* ContentView.swift in Sources */,
+				BF63E11829E8ED0700B2291E /* MapView.swift in Sources */,
 				BF6270DC29E4F10100C756A9 /* AFL3_0706012110001_VincentFarellioGunawanApp.swift in Sources */,
+				BF63E11429E8EC0000B2291E /* CircleImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
