@@ -15,6 +15,19 @@ final class ModelData: ObservableObject {
     @Published var landmarks: [Landmark] = load("landmarkData.json")
     //load hikearray
     var hikes: [Hike] = load("hikeData.json")
+    
+    //computed features array containing only the landmarks that have isFeatured set to true
+    var features: [Landmark] {
+        landmarks.filter { $0.isFeatured }
+    }
+    
+    //dictionary: category names as keys, and an array of associated landmarks for each key
+    var categories: [String: [Landmark]] {
+        Dictionary(
+            grouping: landmarks,
+            by: { $0.category.rawValue }
+        )
+    }
 }
 
 // method that fetches JSON data with a given name from the app’s main bundle.

@@ -10,9 +10,34 @@ import SwiftUI
 import SwiftUI
 
 struct ContentView: View {
+    //state variable for the tab selection
+    @State private var selection: Tab = .featured
+    
+    //show a tab view that lets the user choose between the category or list of landmarks
+    enum Tab {
+        case featured
+        case list
+    }
+    
     var body: some View {
-        // insers the landmarklist view
-        LandmarkList()
+//     wraps the LandmarkList and CategoryHome
+        TabView(selection: $selection) {
+            CategoryHome()
+            // give label
+                .tabItem {
+                    Label("Featured", systemImage: "star")
+                }
+                .tag(Tab.featured)
+            // inserst the landmarklist view
+            LandmarkList()
+            //give label
+                .tabItem {
+                    Label("List", systemImage: "list.bullet")
+                }
+                .tag(Tab.list)
+            //tag is used to coordinate the tab view on which to display
+        }
+
     }
 }
 

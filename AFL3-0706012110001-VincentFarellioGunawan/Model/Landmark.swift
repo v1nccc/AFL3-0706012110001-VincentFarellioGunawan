@@ -18,6 +18,18 @@ struct Landmark: Hashable, Codable, Identifiable {
     var description: String
     var isFavorite: Bool
     //used to differentiate favourite landmarks and not
+    var isFeatured: Bool
+    // wether it is feautred
+    
+    //category property
+    var category: Category
+    
+    //category enumeration (json file already includes a category value for each landmark with one of three string values)
+    enum Category: String, CaseIterable, Codable {
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+    }
     
     //Add an imageName property used to read the name of the image from the data, and a computed image property that loads an image from the asset catalog.
     private var imageName: String
