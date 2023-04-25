@@ -8,11 +8,15 @@
 import Foundation
 import Combine
 
+//using observableobject, swiftui will update any views that need refreshing when the data changes.
 final class ModelData: ObservableObject {
+//array of landmarks thats initialized from landmarkData.json.
+// observable object needs to publish any changes to its data so that its subscribers can pick up the change.
     @Published var landmarks: [Landmark] = load("landmarkData.json")
     var hikes: [Hike] = load("hikeData.json")
 }
 
+// method that fetches JSON data with a given name from the app’s main bundle.
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 

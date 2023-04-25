@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct FavoriteButton: View {
+    //isSet binding that indicates the button’s current state
     @Binding var isSet: Bool
 
     var body: some View {
+        //Button with an action that toggles the isSet state, and changes its appearance based on the state.
         Button {
             isSet.toggle()
         } label: {

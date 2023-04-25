@@ -13,6 +13,8 @@ struct BadgeBackground: View {
             Path { path in
                 var width: CGFloat = min(geometry.size.width, geometry.size.height)
                 let height = width
+                // Scale the shape on the x-axis using xScale
+                // xOffset to recenter the shape within its geometry.
                 let xScale: CGFloat = 0.832
                 let xOffset = (width * (1.0 - xScale)) / 2.0
                 width *= xScale
@@ -23,6 +25,8 @@ struct BadgeBackground: View {
                     )
                 )
 
+                
+                //Draw the lines for each point of the shape data to create a rough hexagonal shape.
                 HexagonParameters.segments.forEach { segment in
                     path.addLine(
                         to: CGPoint(
@@ -31,6 +35,7 @@ struct BadgeBackground: View {
                         )
                     )
 
+                    // draw the Bézier curves for the badge’s corners.
                     path.addQuadCurve(
                         to: CGPoint(
                             x: width * segment.curve.x + xOffset,
@@ -51,6 +56,8 @@ struct BadgeBackground: View {
         }
         .aspectRatio(1, contentMode: .fit)
     }
+    
+    //Replace the solid black background with a gradient to match design
     static let gradientStart = Color(red: 239.0 / 255, green: 120.0 / 255, blue: 221.0 / 255)
     static let gradientEnd = Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)
 }

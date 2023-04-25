@@ -5,11 +5,11 @@
 //  Created by Vincent on 14/04/23.
 //
 
-import CoreGraphics
-
+//import CoreGraphics so we can use CGPoint
 import CoreGraphics
 
 struct HexagonParameters {
+    //hold the three points that represent one side of the hexagon
     struct Segment {
         let line: CGPoint
         let curve: CGPoint
@@ -17,7 +17,9 @@ struct HexagonParameters {
     }
 
     static let adjustment: CGFloat = 0.085
+//    adjustment value that lets us tune the shape of the hexagon.
 
+    //an array to hold segments, and data for the six segments, one for each side of the hexagon.
     static let segments = [
         Segment(
             line:    CGPoint(x: 0.60, y: 0.05),

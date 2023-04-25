@@ -15,8 +15,13 @@ struct LandmarkDetail: View {
         modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
     }
 
+    
+    // all the data here is essentially taken from the landmark data that the "coordinate/which landmark" is passed form the landamrklist
     var body: some View {
+        //use scrolview so it can be scrolled to fit many contents
         ScrollView {
+            
+            //the mapview is put here with the coordinate taken from the landmark data
             MapView(coordinate: landmark.locationCoordinate)
                 .ignoresSafeArea(edges: .top)
                 .frame(height: 300)
@@ -25,13 +30,17 @@ struct LandmarkDetail: View {
                 .offset(y: -130)
                 .padding(.bottom, -130)
 
+            //vstack is used to adjust the items vertically
             VStack(alignment: .leading) {
                 HStack {
                     Text(landmark.name)
                         .font(.title)
+                    //binding to the isFavorite property with the dollar sign ($)
+                    // landmarkIndex is used with the modelData object to ensure that the button updates the isFavorite property of the landmark stored in the model object.
                     FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavorite)
                 }
-
+                
+                //hstack is used to adjust the items horizontally
                 HStack {
                     Text(landmark.park)
                     Spacer()
@@ -53,11 +62,13 @@ struct LandmarkDetail: View {
     }
 }
 
+
+//used for preview, call out any data of landmark
 struct LandmarkDetail_Previews: PreviewProvider {
     static let modelData = ModelData()
 
     static var previews: some View {
-        LandmarkDetail(landmark: modelData.landmarks[0])
+        LandmarkDetail(landmark: modelData.landmarks[1])
             .environmentObject(modelData)
     }
 }
