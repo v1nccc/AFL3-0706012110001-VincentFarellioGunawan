@@ -19,7 +19,7 @@ struct HikeDetail: View {
 
     var body: some View {
         VStack {
-            HikeGraph(hike: hike, path: dataToShow)
+            HikeGraph(data: hike, path: dataToShow)
                 .frame(height: 200)
 
             HStack(spacing: 25) {

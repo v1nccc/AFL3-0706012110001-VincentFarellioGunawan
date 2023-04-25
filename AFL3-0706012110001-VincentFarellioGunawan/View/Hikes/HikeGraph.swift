@@ -8,7 +8,7 @@ The elevation, heart rate, and pace of a hike plotted on a graph.
 import SwiftUI
 
 struct HikeGraph: View {
-    var hike: Hike
+    var data: Hike
     var path: KeyPath<Hike.Observation, Range<Double>>
 
     var color: Color {
@@ -25,7 +25,7 @@ struct HikeGraph: View {
     }
 
     var body: some View {
-        let data = hike.observations
+        let data = data.observations
         let overallRange = rangeOfRanges(data.lazy.map { $0[keyPath: path] })
         let maxMagnitude = data.map { magnitude(of: $0[keyPath: path]) }.max()!
         let heightRatio = 1 - CGFloat(maxMagnitude / magnitude(of: overallRange))
@@ -64,11 +64,11 @@ struct HikeGraph_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            HikeGraph(hike: hike, path: \.elevation)
+            HikeGraph(data: hike, path: \.elevation)
                 .frame(height: 200)
-            HikeGraph(hike: hike, path: \.heartRate)
+            HikeGraph(data: hike, path: \.heartRate)
                 .frame(height: 200)
-            HikeGraph(hike: hike, path: \.pace)
+            HikeGraph(data: hike, path: \.pace)
                 .frame(height: 200)
         }
     }
