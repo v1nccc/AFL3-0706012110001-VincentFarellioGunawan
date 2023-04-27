@@ -17,21 +17,40 @@ struct LandmarkList: View {
     
     // initial falue set false
     @State private var showFavoritesOnly = false
+    
+    
+    //filter state variable defaulting to the all case
+    @State private var filter = FilterCategory.all
+    
+    //enumeration to describe filter states
+    enum FilterCategory: String, CaseIterable, Identifiable {
+        case all = "All"
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+
+        var id: FilterCategory { self }
+    }
+
 
     //Compute a filtered version of the landmarks list by checking the showFavoritesOnly property and each landmark.isFavorite value
     var filteredLandmarks: [Landmark] {
         modelData.landmarks.filter { landmark in
             (!showFavoritesOnly || landmark.isFavorite)
+            && (filter == .all || filter.rawValue == landmark.category.rawValue)
         }
     }
+    
+    
+    var title: String {
+        let title = filter == .all ? "Landmarks" : filter.rawValue
+        return showFavoritesOnly ? "Favorite \(title)" : title
+    }
+
 
     var body: some View {
         NavigationView {
             List {
-                //Add a Toggle view as the first child of the List view, passing a binding to showFavoritesOnly.
-                Toggle(isOn: $showFavoritesOnly) {
-                    Text("Favorites only")
-                }
 
                 ForEach(filteredLandmarks) { landmark in
                     // to move to the landmark detai
@@ -43,7 +62,29 @@ struct LandmarkList: View {
                     }
                 }
             }
-            .navigationTitle("Landmarks")
+            .navigationTitle(title)
+            .frame(minWidth: 300)
+            .toolbar {
+                           ToolbarItem {
+                               Menu {
+                                   //set the filter category
+                                   Picker("Category", selection: $filter) {
+                                                        ForEach(FilterCategory.allCases) { category in
+                                                            Text(category.rawValue).tag(category)
+                                                        }
+                                                    }
+                                                    .pickerStyle(.inline)
+                                   //Add a Toggle view as the first child of the List view, passing a binding to showFavoritesOnly.
+                                   Toggle(isOn: $showFavoritesOnly) {
+                                       Label("Favorites only", systemImage: "star.fill")
+                                   }
+                               } label: {
+                                   Label("Filter", systemImage: "slider.horizontal.3")
+                               }
+                           }
+                       }
+            
+            Text("Select a Landmark")
         }
     }
 }
