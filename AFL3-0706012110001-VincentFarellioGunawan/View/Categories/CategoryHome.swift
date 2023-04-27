@@ -16,12 +16,9 @@ struct CategoryHome: View {
         NavigationView {
             //display categories with a list
             List {
-                //add the image of the first featured landmark to the top of the list
-                modelData.features[0].image
-                                 .resizable()
-                                 .scaledToFill()
-                                 .frame(height: 200)
-                                 .clipped()
+                //featuted landmark in carousel by taking the
+                PageView(pages: modelData.features.map { FeatureCard(landmark: $0) })
+                    .aspectRatio(3 / 2, contentMode: .fit)
                                  .listRowInsets(EdgeInsets())
                                 //make content extend to the edges of the display
 
