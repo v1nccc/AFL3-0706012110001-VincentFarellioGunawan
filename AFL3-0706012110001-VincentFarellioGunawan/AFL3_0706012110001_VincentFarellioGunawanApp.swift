@@ -16,5 +16,16 @@ struct AFL3_0706012110001_VincentFarellioGunawan: App {
             ContentView()
                 .environmentObject(modelData)
         }
+        .commands {
+                LandmarkCommands()
+            }
+        //scene modifier
+        
+        //show settings if in mac os
+        #if os(macOS)
+            Settings {
+                LandmarkSettings()
+            }
+            #endif
     }
 }

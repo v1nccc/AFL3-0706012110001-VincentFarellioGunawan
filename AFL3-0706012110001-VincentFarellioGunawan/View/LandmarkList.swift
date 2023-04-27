@@ -22,6 +22,9 @@ struct LandmarkList: View {
     //filter state variable defaulting to the all case
     @State private var filter = FilterCategory.all
     
+    //state variable for the selected landmark
+    @State private var selectedLandmark: Landmark?
+    
     //enumeration to describe filter states
     enum FilterCategory: String, CaseIterable, Identifiable {
         case all = "All"
@@ -47,10 +50,16 @@ struct LandmarkList: View {
         return showFavoritesOnly ? "Favorite \(title)" : title
     }
 
+    
+    //indicates the index of the selected landmark
+    var index: Int? {
+        modelData.landmarks.firstIndex(where: { $0.id == selectedLandmark?.id })
+    }
 
+    
     var body: some View {
         NavigationView {
-            List {
+            List(selection: $selectedLandmark) {
 
                 ForEach(filteredLandmarks) { landmark in
                     // to move to the landmark detai
@@ -60,6 +69,7 @@ struct LandmarkList: View {
                     } label: {
                         LandmarkRow(landmark: landmark)
                     }
+                    .tag(landmark)
                 }
             }
             .navigationTitle(title)
@@ -85,7 +95,10 @@ struct LandmarkList: View {
                        }
             
             Text("Select a Landmark")
+             
         }
+        //provide a binding the value from the landmarks array
+        .focusedValue(\.selectedLandmark, $modelData.landmarks[index ?? 0])
     }
 }
 
