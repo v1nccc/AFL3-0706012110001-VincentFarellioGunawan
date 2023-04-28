@@ -13,6 +13,7 @@ struct PageView<Page: View>: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
+            //declare PageViewController as a child view
             PageViewController(pages: pages, currentPage: $currentPage)
             PageControl(numberOfPages: pages.count, currentPage: $currentPage)
                 .frame(width: CGFloat(pages.count * 18))

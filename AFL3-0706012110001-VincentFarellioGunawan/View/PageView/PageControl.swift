@@ -8,6 +8,8 @@
 import SwiftUI
 import UIKit
 
+
+//UIViewRepresentable protocol
 struct PageControl: UIViewRepresentable {
     var numberOfPages: Int
     @Binding var currentPage: Int
@@ -19,6 +21,7 @@ struct PageControl: UIViewRepresentable {
     func makeUIView(context: Context) -> UIPageControl {
         let control = UIPageControl()
         control.numberOfPages = numberOfPages
+        //specifying the updateCurrentPage(sender:) method as the action to perform
         control.addTarget(
             context.coordinator,
             action: #selector(Coordinator.updateCurrentPage(sender:)),
@@ -37,7 +40,7 @@ struct PageControl: UIViewRepresentable {
         init(_ control: PageControl) {
             self.control = control
         }
-
+        //implements an @objc method to update the current page binding
         @objc
         func updateCurrentPage(sender: UIPageControl) {
             control.currentPage = sender.currentPage
